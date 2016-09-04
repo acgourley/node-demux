@@ -5,10 +5,22 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tmarrinan/node-demux.git"
+    "url": "git://github.com/acgourley/node-demux.git"
   },
   "dependencies": {
     "nan": "^2.3.5"
+  },
+  "scripts": {
+    "preinstall": "npm install node-pre-gyp",
+    "install": "node-pre-gyp install --fallback-to-build",
+    "publish": "node-pre-gyp rebuild && node-pre-gyp package && node-pre-gyp-github publish",
+    "publish-release": "node-pre-gyp rebuild && node-pre-gyp package && node-pre-gyp-github publish --release"
+  },
+  "binary": {
+    "module_name": "node_demux",
+    "module_path": "./build/Release/",
+    "host": "https://github.com/acgourley/node-demux/releases/download/",
+    "remote_path": "{version}"
   },
   "keywords": [
     "video",
@@ -16,5 +28,9 @@
     "nan"
   ],
   "author": "Thomas Marrinan",
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "node-pre-gyp": "^0.6.30",
+    "node-pre-gyp-github": "^1.3.1"
+  }
 }

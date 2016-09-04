@@ -1,4 +1,8 @@
-var node_demux = require('./build/Release/node_demux');
+
+var binary = require('node-pre-gyp');
+var path = require('path');
+var node_demux_path = binary.find(path.resolve(path.join(__dirname,'./package.json')));
+var node_demux = require(binding_path);
 
 var messages = [
 	"error",
